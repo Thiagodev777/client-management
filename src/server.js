@@ -5,6 +5,8 @@ const app = express();
 
 // eslint-disable-next-line no-unused-vars
 const connection = require("../config/database/database");
+// eslint-disable-next-line no-unused-vars
+const User = require("./models/User");
 
 const mainRoutes = require("./routes/index");
 
