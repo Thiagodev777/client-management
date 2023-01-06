@@ -58,4 +58,53 @@ module.exports = {
       res.redirect("/users");
     }
   },
+
+  async userEdit(req, res) {
+    const { id } = req.params;
+    if (id != undefined) {
+      if (!isNaN(id)) {
+        try {
+          const user = await User.findOne({ where: { id: id } });
+          if (user) {
+            res.render("pages/UsersPages/editUser", {
+              user,
+            });
+          } else {
+            res.redirect("/users");
+          }
+        } catch (error) {
+          console.log(error);
+          res.redirect("/users");
+        }
+      } else {
+        res.redirect("/users");
+      }
+    } else {
+      res.redirect("/users");
+    }
+  },
+
+  async updateUser(req, res) {
+    const { id, name, telephone, email } = req.body;
+    if (id && name && telephone && email) {
+      try {
+        await User.update(
+          {
+            name,
+            telephone,
+            email,
+          },
+          {
+            where: { id: id },
+          }
+        );
+        res.redirect("/users");
+      } catch (error) {
+        console.log(error);
+        res.redirect("/users");
+      }
+    } else {
+      res.redirect("/users");
+    }
+  },
 };

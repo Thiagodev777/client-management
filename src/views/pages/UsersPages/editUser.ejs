@@ -1,0 +1,51 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+  <%- include('../../partials/navbarCreate.ejs') %>
+
+  <div class="container">
+    <div class="card my-5 shadow">
+      <div class="card-header">
+        <h1 class="my-3">Editar Cliente <i class="bi bi-pencil-square"></i></h1>
+      </div>
+      <div class="card-body">
+        <form action="/user/update" method="POST">
+          <div class="my-3">
+            <h5>Nome:</h5>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              value="<%= user.name %>"
+              required
+            />
+          </div>
+          <div class="my-3">
+            <h5>Telefone:</h5>
+            <input
+              type="number"
+              class="form-control"
+              name="telephone"
+              value="<%= user.telephone %>"
+              required
+            />
+          </div>
+          <div class="my-3">
+            <h5>Email:</h5>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              value="<%= user.email %>"
+              required
+            />
+          </div>
+          <input type="hidden" name="id" value="<%= user.id %>" />
+          <button class="btn btn-success my-3" type="submit">
+            Salvar <i class="bi bi-cloud-plus-fill"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include('../../partials/footer.ejs') %>

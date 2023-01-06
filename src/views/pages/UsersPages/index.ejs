@@ -17,10 +17,9 @@
     <hr />
     <% } else { %>
     <div class="table-responsive">
-      <table class="table table-striped shadow">
+      <table class="table table-striped shadow rounded">
         <thead class="table-dark">
           <tr>
-            <th>Id</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th>Email</th>
@@ -30,14 +29,13 @@
         <tbody>
           <% users.forEach(({ id, name, telephone, email }) => { %>
           <tr>
-            <td><%= id %></td>
             <td><%= name %></td>
             <td><%= telephone %></td>
             <td><%= email %></td>
             <td>
-              <button class="btn btn-warning">
+              <a href="/user/edit/<%= id %>" class="btn btn-warning">
                 <i class="bi bi-pencil-fill"></i>
-              </button>
+              </a>
               <form
                 onsubmit="confirmDeletion(event, this)"
                 class="d-inline"
