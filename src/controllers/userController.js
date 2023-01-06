@@ -124,6 +124,7 @@ module.exports = {
         if (users) {
           res.render("pages/UsersPages/searchPage", {
             users,
+            q,
           });
         } else {
           res.redirect("/users");
