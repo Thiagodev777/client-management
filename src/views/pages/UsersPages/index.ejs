@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center my-5">
       <h1>CLIENTES</h1>
       <div>
-        <a href="" class="btn btn-success"
+        <a href="users/new" class="btn btn-success"
           >Cadastrar Novo Cliente <i class="bi bi-person-fill-add"></i
         ></a>
       </div>
@@ -14,9 +14,9 @@
     <hr />
     <h2>Não a clientes cadastrados no sistema...</h2>
     <hr />
-    <% } else { %> <% users.forEach(({ id, name, telephone, email }) => { %>
+    <% } else { %>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-striped shadow">
         <thead class="table-dark">
           <tr>
             <th>Id</th>
@@ -27,6 +27,7 @@
           </tr>
         </thead>
         <tbody>
+          <% users.forEach(({ id, name, telephone, email }) => { %>
           <tr>
             <td><%= id %></td>
             <td><%= name %></td>
@@ -45,9 +46,9 @@
             </td>
           </tr>
         </tbody>
+        <% }) %> <% } %>
       </table>
     </div>
-    <% }) %> <% } %>
   </div>
 </body>
 <%- include('../../partials/footer.ejs') %>

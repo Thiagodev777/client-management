@@ -1,0 +1,52 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+  <%- include('../../partials/navbarCreate.ejs') %>
+
+  <div class="container">
+    <div class="card my-5 shadow">
+      <div class="card-header">
+        <h1 class="my-3">
+          Cadastrar Novo Cliente <i class="bi bi-person-vcard-fill"></i>
+        </h1>
+      </div>
+      <div class="card-body">
+        <form action="/user/save" method="POST">
+          <div class="my-3">
+            <h5>Nome:</h5>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              placeholder="Insira o nome do cliente..."
+              required
+            />
+          </div>
+          <div class="my-3">
+            <h5>Telefone:</h5>
+            <input
+              type="number"
+              class="form-control"
+              name="telephone"
+              placeholder="Insira o telefone do cliente..."
+              required
+            />
+          </div>
+          <div class="my-3">
+            <h5>Email:</h5>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="Insira o email do cliente..."
+              required
+            />
+          </div>
+          <button class="btn btn-success my-3" type="submit">
+            Cadastrar <i class="bi bi-person-plus-fill"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include('../../partials/footer.ejs') %>
