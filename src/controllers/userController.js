@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Op = require("sequelize").Op;
 
 module.exports = {
   async home(req, res) {
@@ -106,5 +107,35 @@ module.exports = {
     } else {
       res.redirect("/users");
     }
+  },
+
+  async searchUser(req, res) {
+    const { q } = req.query;
+
+    if (q) {
+      try {
+        const users = await User.findAll({
+          where: {
+            name: {
+              [Op.like]: `${q}%`,
+            },
+          },
+        });
+        if (users) {
+          res.render("pages/UsersPages/searchPage", {
+            users,
+          });
+        } else {
+          res.redirect("/users");
+        }
+      } catch (error) {
+        console.log(error);
+        res.redirect("/users");
+      }
+    } else {
+      res.redirect("/users");
+    }
+
+    res.render("pages/UsersPages/searchPage");
   },
 };

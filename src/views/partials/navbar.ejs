@@ -1,12 +1,13 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a href="/users" class="navbar-brand">C-MANAGER</a>
-    <form class="d-flex" role="search">
+    <form class="d-flex" action="/user" method="GET" role="search">
       <input
         class="form-control me-2"
         type="search"
         placeholder="Pesquisar Cliente..."
         aria-label="Search"
+        name="q"
         required
       />
       <button class="btn btn-outline-light" type="submit">

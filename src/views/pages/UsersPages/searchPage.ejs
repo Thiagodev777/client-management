@@ -1,0 +1,73 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+  <%- include('../../partials/navbar.ejs') %>
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center my-5">
+      <h1>CLIENTES SEARCH</h1>
+      <div>
+        <a href="users/new" class="btn btn-success"
+          >Cadastrar Novo Cliente <i class="bi bi-person-fill-add"></i
+        ></a>
+      </div>
+    </div>
+
+    <% if(users.length === 0){ %>
+    <hr />
+    <h2>Não Foram encontrados resultados para sua Busca...</h2>
+    <hr />
+    <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-striped shadow rounded">
+        <thead class="table-dark">
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(({ id, name, telephone, email }) => { %>
+          <tr>
+            <td><%= name %></td>
+            <td><%= telephone %></td>
+            <td><%= email %></td>
+            <td>
+              <a href="/user/edit/<%= id %>" class="btn btn-warning">
+                <i class="bi bi-pencil-fill"></i>
+              </a>
+              <form
+                onsubmit="confirmDeletion(event, this)"
+                class="d-inline"
+                action="user/delete"
+                method="POST"
+              >
+                <input type="hidden" name="id" value="<%= id %>" />
+                <button class="btn btn-danger" type="submit">
+                  <i class="bi bi-trash3-fill"></i>
+                </button>
+              </form>
+              <button class="btn btn-info">
+                <i class="bi bi-envelope-fill"></i> ENVIAR EMAIL
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <% }) %> <% } %>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function confirmDeletion(event, form) {
+      event.preventDefault();
+      const confirm = window.confirm(
+        "Tem certeza que deseja excluir este cliente?"
+      );
+      if (confirm) {
+        form.submit();
+      }
+    }
+  </script>
+</body>
+<%- include('../../partials/footer.ejs') %>
