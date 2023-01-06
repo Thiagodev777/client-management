@@ -35,4 +35,27 @@ module.exports = {
       res.redirect("/");
     }
   },
+
+  async deleteUser(req, res) {
+    const { id } = req.body;
+    if (id != undefined) {
+      if (!isNaN(id)) {
+        try {
+          await User.destroy({
+            where: {
+              id: id,
+            },
+          });
+          res.redirect("/users");
+        } catch (error) {
+          console.log(error);
+          res.redirect("/users");
+        }
+      } else {
+        res.redirect("/users");
+      }
+    } else {
+      res.redirect("/users");
+    }
+  },
 };
