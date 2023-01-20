@@ -106,6 +106,11 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    yarn 
    ```
+   
+3. Open the code editor terminal and enter the following command to launch the application.
+   ```sh
+   npm start
+   ```
 
 ## License ⚠️
 
